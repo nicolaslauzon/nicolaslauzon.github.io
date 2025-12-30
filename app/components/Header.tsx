@@ -132,7 +132,7 @@ function Header() {
 			)}
 			{/* Mobile menu */}
 			{menuOpen && (
-				<div className="absolute top-16 right-4 bg-neutral-900/95 rounded-xl shadow-lg flex flex-col items-end p-4 gap-4 md:hidden animate-slide-in-right">
+				<div className="absolute top-16 right-4 bg-neutral-900/95 rounded-xl shadow-lg flex flex-col items-end p-4 gap-4 md:hidden animate-slide-in-right !duration-200">
 					{nav.map((item) => (
 						<a
 							key={item.label}
