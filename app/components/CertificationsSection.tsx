@@ -32,14 +32,18 @@ export default function CertificationsSection() {
 		// Hide burger menu
 		const event = new CustomEvent('cert-modal', { detail: { open: !!selectedCert } });
 		window.dispatchEvent(event);
-		// Prevent background scroll when modal is open
+		// Prevent scroll on both body and main-scroll-container
+		const mainScroll = document.querySelector('.main-scroll-container') as HTMLElement | null;
 		if (selectedCert) {
 			document.body.style.overflow = 'hidden';
+			if (mainScroll) mainScroll.style.overflow = 'hidden';
 		} else {
 			document.body.style.overflow = '';
+			if (mainScroll) mainScroll.style.overflow = '';
 		}
 		return () => {
 			document.body.style.overflow = '';
+			if (mainScroll) mainScroll.style.overflow = '';
 		};
 	}, [selectedCert]);
 
@@ -96,15 +100,15 @@ export default function CertificationsSection() {
 				<div
 					className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-2 sm:p-4"
 				>
-					{/* Modal content */}
 					<div
-						className="relative w-full max-w-full sm:max-w-5xl h-[90vh] flex items-center justify-center z-[101]"
+						className="relative w-full max-w-full sm:max-w-5xl h-[90vh] flex items-center justify-center"
 						onClick={(e) => e.stopPropagation()}
 					>
 						<button
 							onClick={() => setSelectedCert(null)}
-							className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white rounded-full p-2 shadow-lg hover:bg-gray-800 z-[102] border border-black cursor-pointer"
-							style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}
+							className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white rounded-full p-2 shadow-lg hover:bg-gray-800 z-[200] border border-black cursor-pointer"
+							style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.15)", touchAction: 'manipulation' }}
+							tabIndex={0}
 						>
 							<svg
 								className="w-6 h-6"
@@ -133,10 +137,10 @@ export default function CertificationsSection() {
 							style={{ pointerEvents: 'auto' }}
 						/>
 					</div>
-					{/* Click outside to close - overlay rendered after modal content so it does not block pointer events */}
+					{/* Click outside to close */}
 					<div
-						className="absolute inset-0 z-[99]"
-						style={{ pointerEvents: 'auto' }}
+						className="absolute inset-0"
+						style={{ zIndex: 99, pointerEvents: 'auto' }}
 						onClick={() => setSelectedCert(null)}
 					/>
 				</div>
