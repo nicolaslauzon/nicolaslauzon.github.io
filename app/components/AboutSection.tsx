@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative h-screen flex items-center justify-center snap-start snap-always">
+    <section id="about" className="relative h-screen flex items-center justify-center snap-start snap-always bg-black">
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-6xl h-full px-2 sm:px-4 md:px-12 gap-4 md:gap-0 overflow-y-auto md:overflow-visible pb-20 md:pb-0" style={{maxHeight: '100vh'}}>
         {/* Portrait on the left (top on mobile) */}
         <div className="w-full md:w-1/2 flex items-center justify-center md:h-[80vh] md:max-w-xl md:order-1 order-1 md:mt-0 mt-4 pt-10 sm:pt-12 md:pt-0">

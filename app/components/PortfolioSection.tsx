@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function PortfolioSection() {
   return (
     <section id="portfolio" className="relative h-screen flex items-center justify-center snap-start snap-always bg-neutral-950">

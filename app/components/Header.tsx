@@ -11,15 +11,24 @@ const nav = [
 ];
 
 
+
 function Header() {
 	const [showTitle, setShowTitle] = useState(false); // hidden by default
 	const [mounted, setMounted] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('home');
-	const pathname = usePathname();
+	const [hideBurger, setHideBurger] = useState(false);
 
-	// Ref for the scrollable container
-	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+	// Listen for cert-modal event to hide/show burger menu
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		const handler = (e: Event) => {
+			const custom = e as CustomEvent;
+			setHideBurger(!!(custom.detail && custom.detail.open));
+		};
+		window.addEventListener('cert-modal', handler);
+		return () => window.removeEventListener('cert-modal', handler);
+	}, []);
 
 	useEffect(() => {
 		setMounted(true);
@@ -30,6 +39,7 @@ function Header() {
 		const container = document.querySelector('.main-scroll-container');
 		if (!container) return;
 
+		let lastSection = 'home';
 		const handleScroll = () => {
 			let current = 'home';
 			for (const id of sectionIds) {
@@ -48,6 +58,13 @@ function Header() {
 				}
 			}
 			setActiveSection(current);
+			// Update the URL hash if it changed
+			if (current !== lastSection) {
+				if (window.location.hash !== `#${current}`) {
+					history.replaceState(null, '', `#${current}`);
+				}
+				lastSection = current;
+			}
 		};
 		container.addEventListener('scroll', handleScroll, { passive: true });
 		handleScroll();
@@ -92,25 +109,27 @@ function Header() {
 				)}
 			</nav>
 			{/* Mobile menu button */}
-			<button
-				className="md:hidden text-white focus:outline-none"
-				onClick={() => setMenuOpen(!menuOpen)}
-				aria-label="Menu"
-			>
-				<svg
-					className="w-7 h-7"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					viewBox="0 0 24 24"
+			{!hideBurger && (
+				<button
+					className="md:hidden text-white focus:outline-none"
+					onClick={() => setMenuOpen(!menuOpen)}
+					aria-label="Menu"
 				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M4 6h16M4 12h16M4 18h16"
-					/>
-				</svg>
-			</button>
+					<svg
+						className="w-7 h-7"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+				</button>
+			)}
 			{/* Mobile menu */}
 			{menuOpen && (
 				<div className="absolute top-16 right-4 bg-neutral-900/95 rounded-xl shadow-lg flex flex-col items-end p-4 gap-4 md:hidden animate-slide-in-right">
