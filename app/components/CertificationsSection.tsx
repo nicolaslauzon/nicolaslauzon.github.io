@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBiking, FaFirstAid } from "react-icons/fa";
+
 
 const certifications = [
 	{
@@ -21,8 +22,26 @@ const certifications = [
 	},
 ];
 
+
 export default function CertificationsSection() {
 	const [selectedCert, setSelectedCert] = useState<number | null>(null);
+
+	// Notify header to hide/show burger menu on mobile
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		// Hide burger menu
+		const event = new CustomEvent('cert-modal', { detail: { open: !!selectedCert } });
+		window.dispatchEvent(event);
+		// Prevent background scroll when modal is open
+		if (selectedCert) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = '';
+		}
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [selectedCert]);
 
 	return (
 		<section
@@ -75,16 +94,16 @@ export default function CertificationsSection() {
 			{/* Modal */}
 			{selectedCert && (
 				<div
-					className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 sm:p-4"
-					onClick={() => setSelectedCert(null)}
+					className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-2 sm:p-4"
 				>
+					{/* Modal content */}
 					<div
-						className="relative w-full max-w-full sm:max-w-5xl h-[90vh] flex items-center justify-center"
+						className="relative w-full max-w-full sm:max-w-5xl h-[90vh] flex items-center justify-center z-[101]"
 						onClick={(e) => e.stopPropagation()}
 					>
 						<button
 							onClick={() => setSelectedCert(null)}
-							className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white rounded-full p-2 shadow-lg hover:bg-gray-800 z-50 border border-black cursor-pointer"
+							className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white rounded-full p-2 shadow-lg hover:bg-gray-800 z-[102] border border-black cursor-pointer"
 							style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}
 						>
 							<svg
@@ -110,9 +129,16 @@ export default function CertificationsSection() {
 							alt={
 								certifications.find((c) => c.id === selectedCert)?.title + " preview"
 							}
-							className="max-h-[80vh] max-w-full object-contain"
+							className="max-h-[80vh] max-w-full object-contain z-[100]"
+							style={{ pointerEvents: 'auto' }}
 						/>
 					</div>
+					{/* Click outside to close - overlay rendered after modal content so it does not block pointer events */}
+					<div
+						className="absolute inset-0 z-[99]"
+						style={{ pointerEvents: 'auto' }}
+						onClick={() => setSelectedCert(null)}
+					/>
 				</div>
 			)}
 		</section>

@@ -48,7 +48,7 @@ export default function HeroSection() {
         quality={100}
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 flex items-end justify-end w-full px-4 sm:px-8 md:px-16 lg:px-24 pb-[18vh] sm:pb-[22vh] md:pb-[25vh]">
+      <div className="relative z-10 flex items-end justify-end w-full px-4 sm:px-8 md:px-16 lg:px-24 pb-[32vh] sm:pb-[22vh] md:pb-[25vh]">
         <div className="text-right w-full max-w-full sm:max-w-[80vw]">
           <h1 
             className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-wide text-white break-words"
@@ -91,7 +91,15 @@ export default function HeroSection() {
           aria-label="Aller à la section suivante"
           style={{ pointerEvents: 'auto', transition: 'opacity 0.7s, transform 0.7s' }}
         >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-arrow-down drop-shadow-lg">
+          <svg
+            className="drop-shadow-lg w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <polyline points="19 12 12 19 5 12"></polyline>
           </svg>
