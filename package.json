@@ -2,9 +2,9 @@
   "name": "clauclau",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://nicolaslauzon.github.io/clauclau",
+  "homepage": "https://nicolaslauzon.github.io",
   "scripts": {
-    "deploy": "gh-pages -d ."
+    "deploy": "rm -rf .deploy && mkdir .deploy && rsync -a --exclude '.deploy' --exclude '.git' --exclude 'mtb' --exclude 'node_modules' --exclude '.next' --exclude 'dist' --exclude 'npm-debug.log*' ./ .deploy/ && gh-pages -d .deploy"
   },
   "keywords": [],
   "author": "",
