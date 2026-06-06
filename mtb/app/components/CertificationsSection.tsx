@@ -62,7 +62,7 @@ export default function CertificationsSection() {
 			<div className="absolute inset-0 bg-black/50" />
 
 			<div className="relative z-10 w-full max-w-6xl px-2 sm:px-8">
-				   <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white text-center mb-8 sm:mb-12 drop-shadow-2xl">
+				   <h1 className="text-3xl sm:text-5xl md:text-7xl text-white text-center mb-8 sm:mb-12 drop-shadow-2xl" style={{ fontWeight: 600 }}>
 					   Formations
 				   </h1>
 
@@ -83,10 +83,10 @@ export default function CertificationsSection() {
 										<FaBiking className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400" />
 									)}
 								</div>
-								<h3 className="text-lg sm:text-xl font-bold text-gray-900">
+								<h3 className="text-lg sm:text-xl text-gray-900" style={{ fontWeight: 600 }}>
 									{cert.title}
 								</h3>
-								<p className="text-gray-600 text-sm sm:text-base">
+								<p className="text-gray-600 text-sm sm:text-base" style={{ fontWeight: 400 }}>
 									{cert.subtitle}
 								</p>
 							</div>

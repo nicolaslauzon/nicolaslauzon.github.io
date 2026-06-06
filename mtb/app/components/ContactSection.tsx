@@ -5,7 +5,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="relative h-screen flex items-center justify-center snap-start snap-always bg-neutral-950">
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-2 sm:px-0">
-        <h1 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center drop-shadow-2xl mb-6 sm:mb-8">Contact</h1>
+        <h1 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl text-white text-center drop-shadow-2xl mb-6 sm:mb-8" style={{ fontWeight: 600 }}>Contact</h1>
         <div className="flex flex-col gap-8 items-center">
           <div className="flex flex-wrap gap-6 sm:gap-8 mt-2 sm:mt-4 justify-center">
             {/* Email */}
@@ -15,7 +15,7 @@ export default function ContactSection() {
               target="_blank" rel="noopener noreferrer" aria-label="Email"
             >
               <FaEnvelope className="w-8 h-8 mb-1" />
-              <span className="text-xs sm:text-sm">Email</span>
+              <span className="text-xs sm:text-sm" style={{ fontWeight: 400 }}>Email</span>
             </a>
             {/* Instagram */}
             <a
@@ -24,7 +24,7 @@ export default function ContactSection() {
               target="_blank" rel="noopener noreferrer" aria-label="Instagram"
             >
               <FaInstagram className="w-8 h-8 mb-1" />
-              <span className="text-xs sm:text-sm">Instagram</span>
+              <span className="text-xs sm:text-sm" style={{ fontWeight: 400 }}>Instagram</span>
             </a>
             {/* Facebook */}
             <a
@@ -33,7 +33,7 @@ export default function ContactSection() {
               target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             >
               <FaFacebook className="w-8 h-8 mb-1" />
-              <span className="text-xs sm:text-sm">Facebook</span>
+              <span className="text-xs sm:text-sm" style={{ fontWeight: 400 }}>Facebook</span>
             </a>
             {/* LinkedIn */}
             <a
@@ -42,7 +42,7 @@ export default function ContactSection() {
               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
             >
               <FaLinkedin className="w-8 h-8 mb-1" />
-              <span className="text-xs sm:text-sm">LinkedIn</span>
+              <span className="text-xs sm:text-sm" style={{ fontWeight: 400 }}>LinkedIn</span>
             </a>
           </div>
         </div>

@@ -77,9 +77,10 @@ function Header() {
 	return (
 		<header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-16 h-16 bg-transparent">
 			<div
-				className={`text-white font-semibold text-lg md:text-xl tracking-wide transition-opacity duration-300 ${
+				className={`text-white text-lg md:text-xl tracking-wide transition-opacity duration-300 ${
 					shouldShowTitle ? 'opacity-100' : 'opacity-0 pointer-events-none'
 				}`}
+				style={{ fontWeight: 500 }}
 			>
 				Nicolas Lauzon
 			</div>
@@ -89,8 +90,8 @@ function Header() {
 						<a
 							key={item.label}
 							href={item.href}
-							className="text-white font-medium px-4 md:px-6 py-2 border border-white rounded-full transition hover:bg-white/10"
-							style={{ marginLeft: idx === 0 ? 0 : '1.5rem' }}
+							className="text-white px-4 md:px-6 py-2 border border-white rounded-full transition hover:bg-white/10"
+							style={{ marginLeft: idx === 0 ? 0 : '1.5rem', fontWeight: 500 }}
 							{...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
 						>
 							{item.label}
@@ -99,8 +100,8 @@ function Header() {
 						<a
 							key={item.label}
 							href={item.href}
-							className={`text-white font-medium transition ${item.section === activeSection ? 'underline underline-offset-4' : 'hover:underline hover:underline-offset-4'}`}
-							style={{ marginLeft: idx === 0 ? 0 : '1.5rem' }}
+							className={`text-white transition ${item.section === activeSection ? 'underline underline-offset-4' : 'hover:underline hover:underline-offset-4'}`}
+							style={{ marginLeft: idx === 0 ? 0 : '1.5rem', fontWeight: 500 }}
 							{...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
 						>
 							{item.label}
@@ -134,15 +135,16 @@ function Header() {
 			{menuOpen && (
 				<div className="absolute top-16 right-4 bg-neutral-900/95 rounded-xl shadow-lg flex flex-col items-end p-4 gap-4 md:hidden animate-slide-in-right !duration-200">
 					{nav.map((item) => (
-						<a
-							key={item.label}
-							href={item.href}
-							className={`text-white font-medium px-4 py-2 rounded transition w-full text-right ${
-								item.label === 'Réserver un cours' ? 'border border-white' : ''
-							}`}
-							onClick={() => setMenuOpen(false)}
-							{...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-						>
+					<a
+						key={item.label}
+						href={item.href}
+						className={`text-white px-4 py-2 rounded transition w-full text-right ${
+							item.label === 'Réserver un cours' ? 'border border-white' : ''
+						}`}
+						style={{ fontWeight: 500 }}
+						onClick={() => setMenuOpen(false)}
+						{...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+					>
 							{item.label}
 						</a>
 					))}

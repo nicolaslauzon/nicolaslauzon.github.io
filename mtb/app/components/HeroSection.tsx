@@ -54,16 +54,18 @@ export default function HeroSection() {
             className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-wide text-white break-words"
             style={{
               animation: 'slideInRight 1.2s ease-out forwards',
-              opacity: 0
+              opacity: 0,
+              fontWeight: 300
             }}
           >
             Nicolas Lauzon
           </h1>
           <p 
-            className="text-base sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wider text-white/90 mt-2 md:mt-4"
+            className="text-base sm:text-xl md:text-2xl lg:text-3xl tracking-wider text-white/90 mt-2 md:mt-4"
             style={{
               animation: 'slideInRight 1.2s ease-out 0.3s forwards',
-              opacity: 0
+              opacity: 0,
+              fontWeight: 400
             }}
           >
             Coach de vélo de montagne
