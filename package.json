@@ -2,7 +2,7 @@
   "name": "clauclau",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://nicolaslauzon.github.io/clauclau",
+  "homepage": "https://nicolaslauzon.github.io",
   "scripts": {
     "deploy": "gh-pages -d ."
   },

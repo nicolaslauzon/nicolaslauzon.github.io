@@ -95,8 +95,7 @@
     const lastMessageTime = localStorage.getItem("lastMessageTime");
     if (!lastMessageTime) return false;
     
-    const cooldownDuration = 10 * 1000;
-    // const cooldownDuration = 18000000; // 5 hours in milliseconds
+    const cooldownDuration = 18000000; // 5 hours in milliseconds
     const timeSinceLastMessage = Date.now() - parseInt(lastMessageTime, 10);
     return timeSinceLastMessage < cooldownDuration;
   };
