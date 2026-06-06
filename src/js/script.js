@@ -8,7 +8,7 @@
 
   const init = () => {
     const imageNum = Math.floor(Math.random() * 13 + 1);
-    document.body.style.backgroundImage = `url('assets/images/${imageNum}.jpeg')`;
+    document.body.style.backgroundImage = `url('public/assets/images/${imageNum}.jpeg')`;
     document.body.style.backgroundSize = "cover";
 
     loadMessages();
@@ -34,7 +34,7 @@
 
   const loadMessages = () => {
     if (!messagesPromise) {
-      messagesPromise = fetch("messages.txt")
+      messagesPromise = fetch("public/messages.txt")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Unable to load messages");
