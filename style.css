@@ -87,7 +87,11 @@ body {
 	width: 100%;
 	height: 100vh;
 	scroll-snap-align: start;
-	background: url('assets/images/mobile1.png') center / cover no-repeat;
+	background: url('assets/images/mobile1.jpg') center / cover no-repeat;
+	background-image: image-set(
+		url('assets/images/mobile1.webp') type('image/webp'),
+		url('assets/images/mobile1.jpg') type('image/jpeg')
+	);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -123,6 +127,10 @@ body {
 	height: 100vh;
 	scroll-snap-align: start;
 	background: url('assets/images/mobile2.jpg') center / cover no-repeat;
+	background-image: image-set(
+		url('assets/images/mobile2.webp') type('image/webp'),
+		url('assets/images/mobile2.jpg') type('image/jpeg')
+	);
 	background-position: 12% center;
 	display: flex;
 	flex-direction: column;
