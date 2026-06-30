@@ -1,0 +1,24 @@
+name: Deploy to Production GH Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Push Files to .io Repo
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repository-name: nicolaslauzon/nicolaslauzon.github.io
+          branch: master
+          folder: .
+          target-folder: .
